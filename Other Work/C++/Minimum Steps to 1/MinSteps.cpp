@@ -1,5 +1,6 @@
 #include <iostream>
 #include <map>
+#include <time.h>
 
 int min(int first, int second, int third)
 {
@@ -52,15 +53,24 @@ int TabulatedApproach(int num)
 		arr[i] = val_to_add;
 	}
 	return arr[num];
-	delete arr;
+	delete[] arr;
 }
 
 int main()
 {
-	int num = 300000000;
-	std::map<int, int> cache;
-	int steps = TabulatedApproach(num);
-	std::cout << "Steps needed for " << num << " = " << steps << std::endl;
+	int nums[9] = { 3, 30, 300, 3000, 30000, 300000, 3000000, 30000000, 300000000};
+	clock_t start, finish;
+	for (int i = 0; i < 9; i++)
+	{
+		start = clock();
+		int steps = TabulatedApproach(nums[i]);
+		finish = clock() - start;
+		std::cout << "---------------------------------\n";
+		std::cout << "Steps needed for " << nums[i] << " = " << steps << std::endl;
+		std::cout << "Time to execute for " << nums[i] << " = " << finish << std::endl;
+		std::cout << "---------------------------------\n";
+	}
+	
 	return 0;
 }
 
