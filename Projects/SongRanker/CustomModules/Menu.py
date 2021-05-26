@@ -1,7 +1,7 @@
 import os
 import random
 
-from CustomModules import FileReader, SongFileReader, SongArranger, MenuDisplay, SongComparison
+from CustomModules import FileReader, SongFileReader, SongUpdater, MenuDisplay, SongComparison
 
 
 class Menu:
@@ -26,7 +26,7 @@ class Menu:
 
         # Initializes the song ranker
         self.songs.GetFileLines()
-        self.song_arranger = SongArranger.SongArranger(self.songs.list_of_lines)
+        self.song_arranger = SongUpdater.SongArranger(self.songs.list_of_lines)
 
     def GetKValue(self):
         """

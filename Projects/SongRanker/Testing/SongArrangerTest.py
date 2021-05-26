@@ -1,6 +1,6 @@
 import os
 
-from CustomModules import EloCalculator, FileReader, SongFileReader, SongArranger
+from CustomModules import EloCalculator, FileReader, SongFileReader, SongUpdater
 
 project_path = os.path.dirname(os.path.dirname(__file__))
 song_file_path = "/ResourceFiles/BTS_Song_Data"
@@ -15,7 +15,7 @@ song_reader = SongFileReader.SongFileReader(song_file)
 song_reader.GetFileLines()
 
 # Building Song Arranger
-song_arranger = SongArranger.SongArranger(song_reader.list_of_lines)
+song_arranger = SongUpdater.SongArranger(song_reader.list_of_lines)
 song_arranger.ParseSongData()
 
 # Testing RankSongs

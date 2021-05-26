@@ -1,4 +1,11 @@
 import tkinter as tk
+import GuiMenu
 
-window = tk.Tk()
-window.mainloop()
+
+def main():
+    menu = GuiMenu.GuiMenu()
+    menu.RunMenu()
+
+
+if __name__ == "__main__":
+    main()
