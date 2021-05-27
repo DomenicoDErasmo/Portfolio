@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 import tkinter as tk
 import random
-from PIL import ImageTk, Image
+from PIL import Image, ImageTk
 
 from CustomModules import FileReader, SongFileReader, SongUpdater, MenuDisplay, SongComparison
 
@@ -36,7 +36,16 @@ class GuiMenu:
             {
                 "bg": "orchid1",
                 "height": 3,
-                "width": 20
+                "width": 20,
+                "wraplength": 110
+            }
+
+        self.label_properties = \
+            {
+                "bg": "light goldenrod",
+                "height": 3,
+                "width": 20,
+                "wraplength": 110
             }
 
     def GetTwoRandomSongs(self):
@@ -68,20 +77,6 @@ class GuiMenu:
 
         return both_songs
 
-    def BuildSongRanker(self, menu):
-        both_songs = self.GetTwoRandomSongs()
-
-        left_image = os.path.splitext(both_songs[0][1])[0]
-        right_image = os.path.splitext(both_songs[1][1])[0]
-        left_path = Path(os.getcwd()).parent / "ResourceFiles\\Album Covers" / (left_image + ".jpg")
-        right_path = Path(os.getcwd()).parent / "ResourceFiles\\Album Covers" / (right_image + ".jpg")
-        left_img = ImageTk.PhotoImage(Image.open(left_path))
-        right_img = ImageTk.PhotoImage(Image.open(right_path))
-        left_panel = tk.Label(menu, image=left_img)
-        right_panel = tk.Label(menu, image=right_img)
-        left_panel.pack()
-        right_panel.pack()
-
     def SelectLeftSong(self):
         print("Chose left song")
 
@@ -99,34 +94,42 @@ class GuiMenu:
         right_path = Path(os.getcwd()).parent / "ResourceFiles\\Album Covers" / (right_image + ".jpg")
         left_img = ImageTk.PhotoImage(Image.open(left_path).resize((100, 100)))
         right_img = ImageTk.PhotoImage(Image.open(right_path).resize((100, 100)))
-        left_panel = tk.Label(menu, image=left_img)
-        right_panel = tk.Label(menu, image=right_img)
-        # left_panel.place(x=0, y=0)
-        # right_panel.place(x=351, y=0)
 
         # TODO: research placing in frames/nested frames
         # TODO: research how to rebuild window
 
-        left_song_button = tk.Button(menu, **self.button_properties, text=both_songs[0][0], command=self.SelectLeftSong)
-        right_song_button = \
-            tk.Button(menu, **self.button_properties, text=both_songs[1][0], command=self.SelectRightSong)
-        exit_button = tk.Button(menu, **self.button_properties, text="Exit", command=menu.destroy)
 
-        # left_song_button.place(x=0, y=200)
-        # right_song_button.place(x=351, y=200)
-        # exit_button.place(x=351, y=445)
 
         header_frame = tk.Frame(menu, bg="light blue", width=500, height=100)
         header_frame.place(x=0, y=0)
 
         left_song_frame = tk.Frame(menu, bg="pale green", width=250, height=300)
+        left_song_frame.place(x=0, y=100)
+
+        left_song_info = \
+            tk.Label(left_song_frame, **self.label_properties, text=both_songs[0][2] + ": " + both_songs[0][1])
+        left_song_info.place(x=0, y=194)
+
+        left_song_button = \
+            tk.Button(left_song_frame, **self.button_properties, text=both_songs[0][0], command=self.SelectLeftSong)
+        left_song_button.place(x=0, y=244)
+
         right_song_frame = tk.Frame(menu, bg="pale green", width=250, height=300)
+        right_song_frame.place(x=250, y=100)
+
+        right_song_info = \
+            tk.Label(right_song_frame, **self.label_properties, text=both_songs[1][2] + ": " + both_songs[1][1])
+        right_song_info.place(x=105, y=194)
+
+        right_song_button = \
+            tk.Button(right_song_frame, **self.button_properties, text=both_songs[1][0], command=self.SelectRightSong)
+        right_song_button.place(x=105, y=244)
 
         footer_frame = tk.Frame(menu, bg="light blue", width=500, height=100)
         footer_frame.place(x=0, y=400)
 
-        left_song_frame.place(x=0, y=100)
-        right_song_frame.place(x=250, y=100)
+        exit_button = tk.Button(footer_frame, **self.button_properties, text="Exit", command=menu.destroy)
+        exit_button.place(x=351, y=45)
 
         menu.mainloop()
 
