@@ -147,7 +147,7 @@ class GuiMenu:
         change_k_value = tk.Button(gui, **self.button_properties, text="Change K Value", )
         display_top_songs = tk.Button(gui, **self.button_properties, text="Display Top Songs", )
         view_song = tk.Button(gui, **self.button_properties, text="View Song", )
-        reset_song = tk.Button(gui, **self.button_properties, text="Reset Song", )
+        reset_song = tk.Button(gui, **self.button_properties, text="Reset Songs", )
         exit_button = tk.Button(gui, **self.button_properties, text="Exit", command=exit)
 
         rank_songs.place(x=0, y=50)
