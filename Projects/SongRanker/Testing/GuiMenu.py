@@ -88,23 +88,23 @@ class GuiMenu:
         menu.geometry("500x500")
 
         both_songs = self.GetTwoRandomSongs()
-        left_image = os.path.splitext(both_songs[0][1])[0]
-        right_image = os.path.splitext(both_songs[1][1])[0]
-        left_path = Path(os.getcwd()).parent / "ResourceFiles\\Album Covers" / (left_image + ".jpg")
-        right_path = Path(os.getcwd()).parent / "ResourceFiles\\Album Covers" / (right_image + ".jpg")
-        left_img = ImageTk.PhotoImage(Image.open(left_path).resize((100, 100)))
-        right_img = ImageTk.PhotoImage(Image.open(right_path).resize((100, 100)))
 
-        # TODO: research placing in frames/nested frames
         # TODO: research how to rebuild window
-
-
 
         header_frame = tk.Frame(menu, bg="light blue", width=500, height=100)
         header_frame.place(x=0, y=0)
 
         left_song_frame = tk.Frame(menu, bg="pale green", width=250, height=300)
         left_song_frame.place(x=0, y=100)
+
+        left_canvas = tk.Canvas(left_song_frame, width=150, height=150)
+
+        left_image = os.path.splitext(both_songs[0][1])[0]
+        left_path = Path(os.getcwd()).parent / "ResourceFiles\\Album Covers" / (left_image + ".jpg")
+        left_img = ImageTk.PhotoImage(Image.open(left_path).resize((150, 150)))
+
+        left_canvas.create_image(0, 0, image=left_img, anchor="nw")
+        left_canvas.place(x=0, y=0)
 
         left_song_info = \
             tk.Label(left_song_frame, **self.label_properties, text=both_songs[0][2] + ": " + both_songs[0][1])
@@ -116,6 +116,15 @@ class GuiMenu:
 
         right_song_frame = tk.Frame(menu, bg="pale green", width=250, height=300)
         right_song_frame.place(x=250, y=100)
+
+        right_canvas = tk.Canvas(right_song_frame, width=150, height=150)
+
+        right_image = os.path.splitext(both_songs[1][1])[0]
+        right_path = Path(os.getcwd()).parent / "ResourceFiles\\Album Covers" / (right_image + ".jpg")
+        right_img = ImageTk.PhotoImage(Image.open(right_path).resize((150, 150)))
+
+        right_canvas.create_image(0, 0, image=right_img, anchor="nw")
+        right_canvas.place(x=95, y=0)
 
         right_song_info = \
             tk.Label(right_song_frame, **self.label_properties, text=both_songs[1][2] + ": " + both_songs[1][1])
