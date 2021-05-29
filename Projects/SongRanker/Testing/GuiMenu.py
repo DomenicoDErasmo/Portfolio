@@ -1,9 +1,6 @@
 import os
-from pathlib import Path
 import tkinter as tk
 import random
-from PIL import Image, ImageTk
-
 from CustomModules import FileReader, SongFileReader, SongUpdater, MenuDisplay, SongComparison
 
 
@@ -48,6 +45,19 @@ class GuiMenu:
                 "wraplength": 110
             }
 
+    def GetKValue(self):
+        """
+        Gets the k value from settings.
+
+        Returned Values:
+            k_value -- The value for k determined in settings.
+        """
+        self.settings.GetFileLines()
+        start_char = self.settings.list_of_lines[0].rfind(":")
+        end_char = len(self.settings.list_of_lines[0])
+        k_value = int(self.settings.list_of_lines[0][start_char + 1:end_char])
+        return k_value
+
     def GetTwoRandomSongs(self):
         """
         Randomly selects two songs for the user to compare.
@@ -77,77 +87,22 @@ class GuiMenu:
 
         return both_songs
 
-    def SelectLeftSong(self):
-        print("Chose left song")
-
-    def SelectRightSong(self):
-        print("Chose right song")
-
     def RankSongs(self):
-        menu = tk.Toplevel()
-        menu.geometry("500x500")
+        import SongComparisonGUI
+        song_comparison = SongComparisonGUI.SongComparisonGUI()
+        song_comparison.RunMenu()
 
-        both_songs = self.GetTwoRandomSongs()
-
-        # TODO: research how to rebuild window
-
-        header_frame = tk.Frame(menu, bg="light blue", width=500, height=100)
-        header_frame.place(x=0, y=0)
-
-        left_song_frame = tk.Frame(menu, bg="pale green", width=250, height=300)
-        left_song_frame.place(x=0, y=100)
-
-        left_canvas = tk.Canvas(left_song_frame, width=150, height=150)
-
-        left_image = os.path.splitext(both_songs[0][1])[0]
-        left_path = Path(os.getcwd()).parent / "ResourceFiles\\Album Covers" / (left_image + ".jpg")
-        left_img = ImageTk.PhotoImage(Image.open(left_path).resize((150, 150)))
-
-        left_canvas.create_image(0, 0, image=left_img, anchor="nw")
-        left_canvas.place(x=0, y=0)
-
-        left_song_info = \
-            tk.Label(left_song_frame, **self.label_properties, text=both_songs[0][2] + ": " + both_songs[0][1])
-        left_song_info.place(x=0, y=194)
-
-        left_song_button = \
-            tk.Button(left_song_frame, **self.button_properties, text=both_songs[0][0], command=self.SelectLeftSong)
-        left_song_button.place(x=0, y=244)
-
-        right_song_frame = tk.Frame(menu, bg="pale green", width=250, height=300)
-        right_song_frame.place(x=250, y=100)
-
-        right_canvas = tk.Canvas(right_song_frame, width=150, height=150)
-
-        right_image = os.path.splitext(both_songs[1][1])[0]
-        right_path = Path(os.getcwd()).parent / "ResourceFiles\\Album Covers" / (right_image + ".jpg")
-        right_img = ImageTk.PhotoImage(Image.open(right_path).resize((150, 150)))
-
-        right_canvas.create_image(0, 0, image=right_img, anchor="nw")
-        right_canvas.place(x=95, y=0)
-
-        right_song_info = \
-            tk.Label(right_song_frame, **self.label_properties, text=both_songs[1][2] + ": " + both_songs[1][1])
-        right_song_info.place(x=105, y=194)
-
-        right_song_button = \
-            tk.Button(right_song_frame, **self.button_properties, text=both_songs[1][0], command=self.SelectRightSong)
-        right_song_button.place(x=105, y=244)
-
-        footer_frame = tk.Frame(menu, bg="light blue", width=500, height=100)
-        footer_frame.place(x=0, y=400)
-
-        exit_button = tk.Button(footer_frame, **self.button_properties, text="Exit", command=menu.destroy)
-        exit_button.place(x=351, y=45)
-
-        menu.mainloop()
+    def ResetSongs(self):
+        import SongResetGUI
+        song_reset = SongResetGUI.SongResetGUI()
+        song_reset.RunMenu()
 
     def BuildButtons(self, gui):
         rank_songs = tk.Button(gui, **self.button_properties, text="Rank Songs", command=self.RankSongs)
         change_k_value = tk.Button(gui, **self.button_properties, text="Change K Value", )
         display_top_songs = tk.Button(gui, **self.button_properties, text="Display Top Songs", )
         view_song = tk.Button(gui, **self.button_properties, text="View Song", )
-        reset_song = tk.Button(gui, **self.button_properties, text="Reset Songs", )
+        reset_song = tk.Button(gui, **self.button_properties, text="Reset Songs", command=self.ResetSongs)
         exit_button = tk.Button(gui, **self.button_properties, text="Exit", command=exit)
 
         rank_songs.place(x=0, y=50)
