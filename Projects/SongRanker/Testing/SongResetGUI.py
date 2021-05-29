@@ -29,7 +29,7 @@ class SongResetGUI(GuiMenu.GuiMenu):
         right_frame = tk.Frame(self.menu, bg="pale green", width=250, height=300)
         right_frame.place(x=250, y=100)
 
-        yes_button = tk.Button(right_frame, text="No", command=exit)
+        yes_button = tk.Button(right_frame, text="No", command=self.menu.destroy)
         yes_button.place(x=0, y=0)
 
         footer_frame = tk.Frame(self.menu, bg="light blue", width=500, height=100)
