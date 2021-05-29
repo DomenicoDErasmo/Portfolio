@@ -1,5 +1,4 @@
-import tkinter as tk
-from Testing import GuiMenu
+import GuiMenu
 
 
 def main():
