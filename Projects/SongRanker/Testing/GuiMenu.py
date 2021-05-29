@@ -97,11 +97,21 @@ class GuiMenu:
         song_reset = SongResetGUI.SongResetGUI()
         song_reset.RunMenu()
 
+    def ChangeKValue(self):
+        import ChangeKValueGUI
+        change_k = ChangeKValueGUI.ChangeKValueGUI()
+        change_k.RunMenu()
+
+    def ViewSong(self):
+        import ViewSongGUI
+        view_song = ViewSongGUI.ViewSongGUI()
+        view_song.RunMenu()
+
     def BuildButtons(self, gui):
         rank_songs = tk.Button(gui, **self.button_properties, text="Rank Songs", command=self.RankSongs)
-        change_k_value = tk.Button(gui, **self.button_properties, text="Change K Value", )
+        change_k_value = tk.Button(gui, **self.button_properties, text="Change K Value", command=self.ChangeKValue)
         display_top_songs = tk.Button(gui, **self.button_properties, text="Display Top Songs", )
-        view_song = tk.Button(gui, **self.button_properties, text="View Song", )
+        view_song = tk.Button(gui, **self.button_properties, text="View Song", command=self.ViewSong)
         reset_song = tk.Button(gui, **self.button_properties, text="Reset Songs", command=self.ResetSongs)
         exit_button = tk.Button(gui, **self.button_properties, text="Exit", command=exit)
 
