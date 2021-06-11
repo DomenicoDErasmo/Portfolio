@@ -1,4 +1,4 @@
-import GuiMenu
+from Testing import GuiMenu
 
 
 def main():
