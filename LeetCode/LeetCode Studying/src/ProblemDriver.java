@@ -1,4 +1,3 @@
-package studying;
 import java.io.*;
 
 public class ProblemDriver
@@ -14,7 +13,7 @@ public class ProblemDriver
 		switch(problem)
 		{
 		case "shortest substring":	
-			return new studying.ShortestSubstring();
+			return new ShortestSubstring();
 		default: 
 			return null;
 		}
@@ -25,7 +24,7 @@ public class ProblemDriver
 		System.out.print("Enter a problem: ");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		String problem = reader.readLine();
-		studying.Problem p = ProblemFactory(problem);
+		Problem p = ProblemFactory(problem);
 		p.GenerateArguments();
 		p.SolveProblem();
 	}

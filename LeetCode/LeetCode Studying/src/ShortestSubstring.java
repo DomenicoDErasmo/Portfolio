@@ -1,4 +1,3 @@
-package studying;
 import java.util.*;
 
 public class ShortestSubstring extends Problem
