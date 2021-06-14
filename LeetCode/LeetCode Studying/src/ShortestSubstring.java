@@ -1,5 +1,6 @@
 import java.util.*;
 
+@SuppressWarnings("unchecked")
 public class ShortestSubstring extends Problem
 {
 
@@ -57,7 +58,7 @@ public class ShortestSubstring extends Problem
 	public void GenerateArguments()
 	{
 		String inputString = GenerateString();
-		SortedSet<Character> charSubset = GenerateCharacterSubset(inputString);
+		TreeSet<Character> charSubset = GenerateCharacterSubset(inputString);
 		args.add(inputString);
 		args.add(charSubset);
 	}
@@ -65,6 +66,26 @@ public class ShortestSubstring extends Problem
 	@Override
 	public void SolveProblem()
 	{
+		System.out.println("inputString: " + args.get(0));
+		System.out.println("charSubset: " + args.get(1) + "\n");
+		String inputString = (String) args.get(0);
+		TreeSet<Character> charSubset = (TreeSet<Character>) args.get(1);
+
+		TreeSet<Character> encounteredCharacters = new TreeSet<Character>();
+		int left = 0, right = 0;
+		
+		while(!encounteredCharacters.equals(charSubset))
+		{
+			char c = inputString.charAt(right);
+			if (charSubset.contains(c))
+			{
+				encounteredCharacters.add(inputString.charAt(c));
+			}
+			System.out.println("encounteredCharacters:  " + encounteredCharacters.toString());
+			System.out.println("charSubset: \t\t" + charSubset.toString());
+			right++;
+		}
+		System.out.println(inputString.substring(0, right));
 		
 	}
 

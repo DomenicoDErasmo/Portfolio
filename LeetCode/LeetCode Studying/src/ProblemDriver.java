@@ -2,12 +2,6 @@ import java.io.*;
 
 public class ProblemDriver
 {
-
-	public ProblemDriver()
-	{
-		// TODO Auto-generated constructor stub
-	}
-	
 	private static Problem ProblemFactory(String problem)
 	{
 		switch(problem)
