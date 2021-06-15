@@ -2,11 +2,6 @@ import java.util.*;
 
 public class ShortestSubstring extends Problem
 {
-	public ShortestSubstring()
-	{
-		this.args = new ArrayList<Object>();
-	}
-
 	private String GenerateString()
 	{
 		Random rand = new Random();

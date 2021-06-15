@@ -8,6 +8,8 @@ public class ProblemDriver
 		{
 		case "shortest substring":	
 			return new ShortestSubstring();
+		case "biggest subarray":
+			return new BiggestSubarray();
 		default: 
 			return null;
 		}
