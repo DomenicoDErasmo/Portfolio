@@ -10,6 +10,8 @@ public class ProblemDriver
 			return new ShortestSubstring();
 		case "biggest subarray":
 			return new BiggestSubarray();
+		case "balanced parentheses":
+			return new BalancedParentheses();
 		default: 
 			return null;
 		}
