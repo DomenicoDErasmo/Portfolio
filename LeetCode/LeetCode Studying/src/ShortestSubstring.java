@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 @SuppressWarnings("unchecked")
 public class ShortestSubstring extends Problem
@@ -12,7 +13,7 @@ public class ShortestSubstring extends Problem
 	private String GenerateString()
 	{
 		Random rand = new Random();
-		int bounds = rand.nextInt(15) + 5;
+		int bounds = rand.nextInt(15) + 10;
 		StringBuffer buffer = new StringBuffer();
 		for (int i = 0; i < bounds; i++)
 		{
@@ -63,30 +64,22 @@ public class ShortestSubstring extends Problem
 		args.add(charSubset);
 	}
 
+	
+
 	@Override
 	public void SolveProblem()
 	{
 		System.out.println("inputString: " + args.get(0));
 		System.out.println("charSubset: " + args.get(1) + "\n");
 		String inputString = (String) args.get(0);
-		TreeSet<Character> charSubset = (TreeSet<Character>) args.get(1);
+		int left = 0;
+		int right = 0;
+		int min = inputString.length();
+		
+		// TODO: implement algorithm
 
-		TreeSet<Character> encounteredCharacters = new TreeSet<Character>();
-		int left = 0, right = 0;
-		
-		while(!encounteredCharacters.equals(charSubset))
-		{
-			char c = inputString.charAt(right);
-			if (charSubset.contains(c))
-			{
-				encounteredCharacters.add(inputString.charAt(c));
-			}
-			System.out.println("encounteredCharacters:  " + encounteredCharacters.toString());
-			System.out.println("charSubset: \t\t" + charSubset.toString());
-			right++;
-		}
-		System.out.println(inputString.substring(0, right));
-		
+		System.out.println("Minimum Substring: " + inputString.substring(left, right));
+		System.out.println("Minimum Substring Length: " + min);
 	}
 
 }
