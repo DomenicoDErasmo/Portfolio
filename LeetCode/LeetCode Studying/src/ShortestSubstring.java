@@ -1,10 +1,7 @@
 import java.util.*;
-import java.util.stream.Collectors;
 
-@SuppressWarnings("unchecked")
 public class ShortestSubstring extends Problem
 {
-
 	public ShortestSubstring()
 	{
 		this.args = new ArrayList<Object>();
@@ -69,47 +66,15 @@ public class ShortestSubstring extends Problem
 	@Override
 	public void SolveProblem()
 	{
+		System.out.println("inputString: " + args.get(0));
+		System.out.println("charSubset: " + args.get(1) + "\n");
 		String inputString = (String) args.get(0);
-		TreeSet<Character> charSubset = (TreeSet<Character>)args.get(1);
-		int left = 0, right = 0, min = inputString.length(), charactersEncountered = 0;
-		HashMap<Character, Integer> substringLetters = new HashMap<>();
+		int left = 0;
+		int right = 0;
+		int min = inputString.length();
 		
-		while (right < inputString.length())
-		{
-			char currentRight = inputString.charAt(right);
-			if (charSubset.contains(currentRight))
-			{
-				substringLetters.put(currentRight, substringLetters.getOrDefault(currentRight, 0) + 1);
-				if (substringLetters.get(currentRight) == 1)
-				{
-					charactersEncountered++;
-				}
-			}
-			right++;
+		// TODO: implement algorithm
 
-			if (charactersEncountered == charSubset.size())
-			{
-				while (charactersEncountered == charSubset.size())
-				{
-					Character currentLeft = (Character)inputString.charAt(left);
-					if (charSubset.contains(currentLeft))
-					{
-						substringLetters.computeIfPresent(currentLeft, (k, v) -> v - 1);
-						if (substringLetters.get(currentLeft) == 0)
-						{
-							charactersEncountered--;
-						}
-					}
-					left++;
-				}
-				if (right - left + 1  < min)
-				{
-					min = right - left + 1;
-				}
-			}
-		}
-		System.out.println("Initial String: " + inputString);
-		System.out.println("Subset of Characters: " + charSubset);
 		System.out.println("Minimum Substring: " + inputString.substring(left, right));
 		System.out.println("Minimum Substring Length: " + min);
 	}
