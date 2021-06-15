@@ -61,8 +61,6 @@ public class ShortestSubstring extends Problem
 		args.add(charSubset);
 	}
 
-	
-
 	@Override
 	public void SolveProblem()
 	{
@@ -110,5 +108,4 @@ public class ShortestSubstring extends Problem
 		System.out.println("Subset of Characters: " + charSubset);
 		System.out.println("Minimum Substring Length: " + min);
 	}
-
 }
