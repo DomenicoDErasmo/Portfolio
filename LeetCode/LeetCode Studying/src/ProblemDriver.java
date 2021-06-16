@@ -14,6 +14,8 @@ public class ProblemDriver
 			return new BalancedParentheses();
 		case "substring below target":
 			return new SubstringBelowTarget();
+		case "merged times":
+			return new MergedTimes();
 		default: 
 			return null;
 		}
