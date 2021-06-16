@@ -1,5 +1,6 @@
 import java.util.*;
 
+@SuppressWarnings("unchecked")
 public class ShortestSubstring extends Problem
 {
 	private String GenerateString()
@@ -64,7 +65,6 @@ public class ShortestSubstring extends Problem
 		int left = 0, right = 0, min = inputString.length(), charactersEncountered = 0;
 		HashMap<Character, Integer> substringLetters = new HashMap<>();
 		
-		// TODO: implement algorithm
 		while (right < inputString.length())
 		{
 			char currentRight = inputString.charAt(right);
