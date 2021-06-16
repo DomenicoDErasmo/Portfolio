@@ -10,6 +10,11 @@ public class MergedTimes extends Problem
         System.out.print("]\n");
     }
 
+    private void SortListOfLists(int[][] arr)
+    {
+    // TODO: implement QuickSort
+    }
+
     public void GenerateArguments()
     {
         int length = rand.nextInt(5) + 10;
@@ -37,5 +42,6 @@ public class MergedTimes extends Problem
         */
         int[][] arr = (int[][])args.get(0);
         PrintListOfLists(arr);
+        SortListOfLists(arr);
     }
 }
