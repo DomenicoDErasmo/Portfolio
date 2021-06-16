@@ -1,10 +1,7 @@
-import java.util.*;
-
 public class BiggestSubarray extends Problem
 {
     public void GenerateArguments()
     {
-        Random rand = new Random();
         int length = rand.nextInt(10) + 10;
         int range = rand.nextInt(10) + 10;
         int[] arr = new int[length];

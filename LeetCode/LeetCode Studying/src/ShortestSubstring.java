@@ -5,7 +5,6 @@ public class ShortestSubstring extends Problem
 {
 	private String GenerateString()
 	{
-		Random rand = new Random();
 		int bounds = rand.nextInt(15) + 10;
 		StringBuffer buffer = new StringBuffer();
 		for (int i = 0; i < bounds; i++)
@@ -33,7 +32,6 @@ public class ShortestSubstring extends Problem
 	
 	private TreeSet<Character> GenerateCharacterSubset(String str)
 	{
-		Random rand = new Random();
 		ArrayList<Character> allCharacters = GetAllCharacters(str);
 		TreeSet<Character> subsetCharacters = new TreeSet<Character>();
 		int numCharacters = rand.nextInt(allCharacters.size() - 3) + 3;

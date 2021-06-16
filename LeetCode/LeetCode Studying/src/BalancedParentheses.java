@@ -18,7 +18,6 @@ public class BalancedParentheses extends Problem
 
     public void GenerateArguments()
     {
-        Random rand = new Random();
         int length = rand.nextInt(5) + 10;
         StringBuffer buffer = new StringBuffer();
         for (int i = 0; i < length; i++)
