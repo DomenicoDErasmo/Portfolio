@@ -1,0 +1,4 @@
+Source:
+https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/
+
+Goal: Learn about category theory in the context of computer science and implement the concepts
