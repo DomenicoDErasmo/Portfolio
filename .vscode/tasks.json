@@ -4,12 +4,12 @@
         {
             "type": "cppbuild",
             "label": "C/C++: g++ build active file",
-            "command": "/usr/bin/g++",
+            "command": "C:\\Program Files\\LLVM\\bin\\clang.exe",
             "args": [
                 "-g",
                 "${file}",
                 "-o",
-                "${workspaceFolder}/bin/outputfile",
+                "${workspaceFolder}\\bin\\${fileBasenameNoExtension}",
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
