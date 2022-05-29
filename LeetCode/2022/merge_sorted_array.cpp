@@ -28,29 +28,17 @@ public:
         int left = 0, right = 0, current_size = 0;
         while(have_elements_in_either_array(left, m, right, n))
         {
-            // compare left and right pointing elements
-            // if left's is bigger, simply increment
-            // if right's is bigger, shift all from left's pointer onward to right and insert
-            //std::cout << "====================================" << std::endl;
-            //std::cout << "m: " << m << ", n: " << n << ", current_size: " << current_size << std::endl;
-            //std::cout << "left: " << left << ", right: " << right << std::endl;
-            //std::cout << "left val: " << nums1[left] << ", right val: " << nums2[right] << std::endl;
             if (left >= m)
             {
-                // insert remaining in
                 while(right < n)
                 {
                     int i = 0;
                     while ((nums1[i] <= nums2[right]) and i < current_size)
                     {
-                        //std::cout << "i: " << i << ", right: " << right << ", current_size: " << current_size << std::endl;
-                        //std::cout << "i val: " << nums1[i] << ", right val: "<< nums2[right] << std::endl;
                         i++;
                     }
                     nums1.insert(nums1.begin() + i, nums2[right]);
                     nums1.pop_back();
-                    //printVector(nums1);
-                    //std::cout << std::endl;
                     i = 0;
                     right++;
                     current_size++;
@@ -72,8 +60,6 @@ public:
                 left++;
                 current_size++;
             }
-            //printVector(nums1);
-            //std::cout << std::endl;
         }
     }
 private:
