@@ -13,3 +13,6 @@
 [submodule "cpp_build_test"]
 	path = cpp_build_test
 	url = https://github.com/DomenicoDErasmo/cpp_build_test
+[submodule "LeetCode"]
+	path = LeetCode
+	url = .\\LeetCode\\
