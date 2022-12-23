@@ -1,8 +1,8 @@
 [submodule "Diabetes-Readmission-Predictor"]
 	path = Diabetes-Readmission-Predictor
 	url = https://github.com/DomenicoDErasmo/Diabetes-Readmission-Predictor
-[submodule "GraphTheoryReview"]
-	path = GraphTheoryReview
+[submodule "DSA-Review"]
+	path = DSA-Review
 	url = https://github.com/DomenicoDErasmo/DSA-Review
 [submodule "Recursive-LS"]
 	path = Recursive-LS
