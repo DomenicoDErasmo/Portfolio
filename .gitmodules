@@ -3,7 +3,7 @@
 	url = https://github.com/DomenicoDErasmo/Diabetes-Readmission-Predictor
 [submodule "GraphTheoryReview"]
 	path = GraphTheoryReview
-	url = https://github.com/DomenicoDErasmo/GraphTheoryReview
+	url = https://github.com/DomenicoDErasmo/DSA-Review
 [submodule "Recursive-LS"]
 	path = Recursive-LS
 	url = https://github.com/DomenicoDErasmo/Recursive-LS
@@ -15,4 +15,4 @@
 	url = https://github.com/DomenicoDErasmo/cpp_build_test
 [submodule "LeetCode"]
 	path = LeetCode
-	url = .\\LeetCode\\
+	url = https://github.com/DomenicoDErasmo/LeetCode
